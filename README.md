@@ -1,19 +1,20 @@
-# AltServer Dump Proxy
+# AltServer Certificate Dumper
 
 > A proxy DLL for Windows to dump your developer account certificate from AltServer.
 
-There is no official way to obtain your developer account's certificate in Windows. AltServer does this under the hood, but for (security?) reasons, the certificate never touches your disk unprotected.
+There is no official way to obtain your developer account's certificate in Windows. [AltServer](https://altstore.io/) does this under the hood, but for (security?) reasons, the certificate never touches your disk unprotected.
 
-This project is a simple patch that will hook into AltServer and dump your certificate and password to your Desktop as AltStore processes them. The patch is completely transparent and will cause no side effects whatsoever.
+This project is a simple patch that will hook into AltServer and dump your certificate and password to your Desktop as they are processed. The patch is completely transparent and will cause no side effects.
 
 ## Usage
 
 ### Installing
 
-1. Download the proxy `zlib1.dll` from the [releases](https://github.com/SignTools/altserver-cert-dumper/releases)
-2. Go to your AltServer's installation folder. By default, this is: `C:\Program Files (x86)\AltServer`
-3. Inside AltServer's folder, rename the original `zlib1.dll` to `zlib2.dll`
-4. Move the proxy `zlib1.dll` that you downloaded from this website inside AltServer's folder. You should end up with both `zlib1.dll` and `zlib2.dll` next to each other, and nothing should have been replaced.
+1. If you haven't already, install [AltServer](https://altstore.io/)
+2. Download this project's proxy `zlib1.dll` from the [releases](https://github.com/SignTools/altserver-cert-dumper/releases)
+3. Go to your AltServer's installation folder. By default, this is: `C:\Program Files (x86)\AltServer`
+4. Inside AltServer's folder, rename the original `zlib1.dll` to `zlib2.dll`
+5. Move this project's proxy `zlib1.dll`, the one you just downloaded, inside AltServer's folder. You should end up with both `zlib1.dll` and `zlib2.dll` next to each other. Nothing should have been replaced.
 
 ### Dumping
 
