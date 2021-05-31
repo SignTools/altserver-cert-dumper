@@ -1,0 +1,41 @@
+name: Release
+
+on:
+  push:
+    branches: [master, develop]
+  pull_request:
+    branches: [master, develop]
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout with token
+        if: github.event_name != 'pull_request'
+        uses: actions/checkout@v2.3.4
+        with:
+          token: ${{ secrets.API_GITHUB_TOKEN }}
+          submodules: true
+
+      - name: Checkout without token
+        if: github.event_name == 'pull_request'
+        uses: actions/checkout@v2.3.4
+        with:
+          submodules: true
+
+      - name: Build
+        run: |
+          $env:Path = "C:\msys64\mingw32\bin;$env:Path"
+          mkdir build
+          cd build
+          cmake .. -DCMAKE_BUILD_TYPE=Release -G "MinGW Makefiles"
+          cmake --build .
+
+      - name: Version
+        if: github.event_name != 'pull_request'
+        uses: cycjimmy/semantic-release-action@v2.5.4
+        with:
+          semantic_version: 17.4
+        env:
+          GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
