@@ -11,10 +11,11 @@ This project is a simple patch that will hook into AltServer and dump your certi
 ### Installing
 
 1. If you haven't already, install [AltServer](https://altstore.io/)
-2. Download this project's proxy `zlib1.dll` from the [releases](https://github.com/SignTools/altserver-cert-dumper/releases)
-3. Go to your AltServer's installation folder. By default, this is: `C:\Program Files (x86)\AltServer`
-4. Inside AltServer's folder, rename the original `zlib1.dll` to `zlib2.dll`
-5. Move this project's proxy `zlib1.dll`, the one you just downloaded, inside AltServer's folder. You should end up with both `zlib1.dll` and `zlib2.dll` next to each other. Nothing should have been replaced.
+2. Make sure AltServer is not running in your system tray. If it is, quit it.
+3. Download this project's proxy `zlib1.dll` from the [releases](https://github.com/SignTools/altserver-cert-dumper/releases)
+4. Go to your AltServer's installation folder. By default, this is: `C:\Program Files (x86)\AltServer`
+5. Inside AltServer's folder, rename the original `zlib1.dll` to `zlib2.dll`
+6. Move this project's proxy `zlib1.dll`, the one you just downloaded, inside AltServer's folder. You should end up with both `zlib1.dll` and `zlib2.dll` next to each other. Nothing should have been replaced.
 
 ### Dumping
 
@@ -25,9 +26,10 @@ This project is a simple patch that will hook into AltServer and dump your certi
 
 ### Uninstalling
 
-1. Go to your AltServer's installation folder. By default, this is: `C:\Program Files (x86)\AltServer`
-2. Delete the proxy `zlib1.dll`
-3. Rename the original `zlib2.dll` back to `zlib1.dll`
+1. Make sure AltServer is not running in your system tray. If it is, quit it.
+2. Go to your AltServer's installation folder. By default, this is: `C:\Program Files (x86)\AltServer`
+3. Delete the proxy `zlib1.dll`
+4. Rename the original `zlib2.dll` back to `zlib1.dll`
 
 ## Building
 
